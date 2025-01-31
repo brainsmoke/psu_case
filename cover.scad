@@ -14,7 +14,8 @@ depth=40;
 xt60_loc = [ [-47,-depth, 15], [-27,-depth, 15], [-7,-depth, 15] ];
 plug_loc = [5,-depth, 0];
 
-margin = 0;
+margin = 0.3;
+m_margin = 1;
 
 case_w_inner = 115+2*margin;
 case_h_inner = 30+2*margin;
@@ -53,15 +54,15 @@ preview()
 	plug();
 }
 
-module cutout(margin=0)
+module cutout(margin=0, m_margin=0)
 {
 	mw_lrs_keepout(margin=margin);
 
 	for ( p = xt60_loc )
 	translate(p)
-	translate([0,case_thickness,0])
+	translate([0,0,0])
 	rotate([90,90,0])
-	xt60f_cutout(margin=margin);
+	xt60f_cutout(margin=margin,m_margin=m_margin);
 
 	translate(plug_loc)
 	plug(margin=margin);
@@ -119,7 +120,8 @@ module cover()
 					for ( p = xt60_loc )
 					translate(p)
 					rotate([90,90,0])
-					xt60f_shell_cutout(margin=margin+case_thickness);
+					xt60f_shell_cutout(margin=  margin+case_thickness,
+					                 m_margin=m_margin+case_thickness);
 
 					at_panel_screws()
 					translate([0,-e, 0])
@@ -134,7 +136,7 @@ module cover()
 		}
 		union()
 		{
-			cutout(margin);
+			cutout(margin=margin,m_margin=m_margin);
 
 			at_panel_screws()
 			translate([0,case_thickness+e, 0])

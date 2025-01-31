@@ -40,17 +40,32 @@ module xt_base(w, h, d, chamfer, corner, margin=0, e=0)
 	circle(r);
 }
 
-module xt60_combined_shell_cutout(margin=0, e=0)
+module xt60_combined_shell_cutout(margin=0,f_margin=-1,m_margin=-1, e=0)
 {
 	b=1; 
 	xt_base(xt60_w, xt60_h, xt60_combined_d, xt60_chamfer, xt60_corner, margin, e);
+	if (f_margin > margin)
+	hull()
+	{
+		xt_base(xt60_w, xt60_h, xt60f_base_d, xt60_chamfer, xt60_corner, f_margin, e);
+		translate([0,0,xt60f_base_d])
+		xt_base(xt60_w, xt60_h, f_margin-margin, xt60_chamfer, xt60_corner, margin, e);
+	}
+	if (m_margin > margin)
+	hull()
+	{
+		translate([0,0,xt60f_base_d-(m_margin-margin)])
+		xt_base(xt60_w, xt60_h, m_margin-margin, xt60_chamfer, xt60_corner, margin, e);
+		translate([0,0,xt60f_base_d])
+		xt_base(xt60_w, xt60_h, xt60_combined_d-xt60f_base_d, xt60_chamfer, xt60_corner, m_margin, e);
+	}
 }
 
 
-module xt60_combined_cutout(margin=0, e=0)
+module xt60_combined_cutout(margin=0,f_margin=-1,m_margin=-1, e=0)
 {
 	b=1; 
-	xt60_combined_shell_cutout(margin, e);
+	xt60_combined_shell_cutout(margin,f_margin,m_margin, e);
 
 	translate([0, 0, -xt60f_pin_d-margin])
 	xt_pins(xt60_pin_w+margin*2, xt60f_pin_d+b+margin, xt60_pitch);
@@ -59,16 +74,16 @@ module xt60_combined_cutout(margin=0, e=0)
 	xt_pins(xt60_pin_w+margin*2, xt60m_pin_d+b+margin, xt60_pitch);
 }
 
-module xt60f_cutout(margin=0,e=0)
+module xt60f_cutout(margin=0,f_margin=-1,m_margin=-1,e=0)
 {
 	translate([0,0,-xt60f_d])
-	xt60_combined_cutout(margin,e);
+	xt60_combined_cutout(margin,f_margin,m_margin,e);
 }
 
-module xt60f_shell_cutout(margin=0,e=0)
+module xt60f_shell_cutout(margin=0,f_margin=-1,m_margin=-1,e=0)
 {
 	translate([0,0,-xt60f_d])
-	xt60_combined_shell_cutout(margin,e);
+	xt60_combined_shell_cutout(margin,f_margin,m_margin,e);
 }
 
 module xt60f()
@@ -98,5 +113,5 @@ module xt60f()
 }
 
 xt60f();
-%xt60f_cutout(margin=.4,e=e);
+%xt60f_cutout(margin=.4,m_margin=1,e=e);
 
