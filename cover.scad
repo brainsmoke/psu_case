@@ -14,7 +14,7 @@ depth=40;
 xt60_loc = [ [-47,-depth, 15], [-27,-depth, 15], [-7,-depth, 15] ];
 plug_loc = [5,-depth, 0];
 
-margin = 0.3;
+margin = 0.25;
 m_margin = 1;
 
 case_w_inner = 115+2*margin;
