@@ -30,18 +30,23 @@ case_dim = [case_w, case_d, case_h];
 case_dim_inner = [case_w_inner, case_d, case_h_inner];
 case_dim_inside = [(case_w_inner+case_w)/2, case_d, (case_h_inner+case_h)/2];
 
+bump_corner=(case_thickness+margin)*2.5;
+
+front = [0,-1, 0];
 bottom_front = [0,-1,-1];
 
 grid_rows = 3;
-grid_cols = 12;
+grid_cols = 11;
 grid_pitch = 10;
 grid_thickness = .8;
 grid_depth=12;
-grid_xoff =3;
+grid_xoff =-2;
 
 screw_thread=3;
 screw_hole_r=(screw_thread*.9)/2;
 screw_hole_border=2;
+
+mw_lrs_gap_d = 18.5;
 
 preview()
 {
@@ -84,6 +89,29 @@ module shell()
 		translate([0, -depth+case_thickness, -margin])
 		chamfer_block([case_w_inner, case_d, case_h_inner], bottom_front, r=case_thickness);
 	}
+}
+
+module round_corner(w)
+{
+	difference()
+	{
+		rotate([90,0,0])
+		cylinder(w, r1=w, r2=0);
+		union()
+		{
+			translate([-w-e,-w,-w])
+			cube([w,w*2,w*2]);
+
+			translate([-w,-w,-w-e])
+			cube([w*2,w*2,w]);
+		}
+	}
+}
+
+
+module bump_corner(w)
+{
+	round_corner(w, $fn=4);
 }
 
 module front_grid()
@@ -132,9 +160,16 @@ module cover()
 					circle(screw_hole_r+screw_hole_border);
 
 				}
-				translate([0, -depth+e, -e])
-				block(case_dim_inside, bottom_front);
+				translate([0, -depth+e, case_h_inner/2])
+				block(case_dim_inside, front);
 			}
+
+			translate([0,-margin,case_h_inner/2-margin])
+			for (x=[1, -1])
+			for (z=[1, -1])
+			scale([x, 1, z])
+			translate([-case_w_inner/2, 0,-case_h_inner/2])
+			bump_corner(bump_corner);
 		}
 		union()
 		{
@@ -150,3 +185,4 @@ module cover()
 }
 
 #cover();
+
