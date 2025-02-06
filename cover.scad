@@ -4,6 +4,7 @@ use <grid.scad>
 
 use <mw_lrs.scad>
 use <powerplug.scad>
+use <power_shield.scad>
 use <xt.scad>
 
 $fn=16;
@@ -12,16 +13,19 @@ e=.001;
 depth=40;
 
 xt60_loc = [ [-47,-depth, 15], [-27,-depth, 15], [-7,-depth, 15] ];
-plug_loc = [5,-depth, 0];
+plug_loc = [5,-depth, 1.5];
 
-margin = 0.3;
+margin = 0.15;
 
 xt60_margin = 0.25;
 xt60m_margin = 1;
 
+xt60_thickness = 1.5;
+plug_thickness = 2;
+
 case_w_inner = 115+2*margin;
 case_h_inner = 30+2*margin;
-case_thickness = 2;
+case_thickness = 3;
 case_w = case_w_inner + 2*case_thickness;
 case_d = depth + 40;
 case_h = case_h_inner + 2*case_thickness;
@@ -31,6 +35,7 @@ case_dim_inner = [case_w_inner, case_d, case_h_inner];
 case_dim_inside = [(case_w_inner+case_w)/2, case_d, (case_h_inner+case_h)/2];
 
 bump_corner=(case_thickness+margin)*2.5;
+
 
 front = [0,-1, 0];
 bottom_front = [0,-1,-1];
@@ -59,6 +64,9 @@ preview()
 
 	translate(plug_loc)
 	plug();
+
+	translate(plug_loc)
+	power_shield();
 }
 
 module cutout()
@@ -72,9 +80,13 @@ module cutout()
 	xt60f_cutout(margin=xt60_margin,m_margin=xt60m_margin,e=e);
 
 	translate(plug_loc)
-	plug(margin=margin);
+	{
+	plug(margin=margin, , extra_depth=-2);
+	plug_latches(margin=margin);
+	}
 
-	mw_lrs_holes() m4_hole(10);
+	mw_lrs_holes()
+	m4_hole(10);
 
 	mw_lrs_vents_keepout(h=10, margin=1);
 }
@@ -145,13 +157,13 @@ module cover()
 				{
 					front_grid();
 					translate(plug_loc)
-					plug(margin=margin+case_thickness);
+					plug(margin=margin+plug_thickness, extra_depth=-2);
 	
 					for ( p = xt60_loc )
 					translate(p)
 					rotate([90,90,0])
-					xt60f_shell_cutout(margin=  xt60_margin+case_thickness,
-					                 m_margin=xt60m_margin+case_thickness);
+					xt60f_shell_cutout(margin=  xt60_margin+xt60_thickness,
+					                 m_margin=xt60m_margin+xt60_thickness);
 
 					at_panel_screws()
 					translate([0,-e, 0])
