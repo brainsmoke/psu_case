@@ -26,6 +26,7 @@ plug_thickness = 2;
 case_w_inner = 115+2*margin;
 case_h_inner = 30+2*margin;
 case_thickness = 3;
+case_front_thickness = 1.5;
 case_w = case_w_inner + 2*case_thickness;
 case_d = depth + 40;
 case_h = case_h_inner + 2*case_thickness;
@@ -98,7 +99,7 @@ module shell()
 		translate([0, -depth, -case_thickness-margin])
 		rounded_block_y(case_dim, bottom_front, r=case_thickness);
 
-		translate([0, -depth+case_thickness, -margin])
+		translate([0, -depth+case_front_thickness, -margin])
 		chamfer_block([case_w_inner, case_d, case_h_inner], bottom_front, r=case_thickness);
 	}
 }
