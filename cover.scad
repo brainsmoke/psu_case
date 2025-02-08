@@ -17,6 +17,8 @@ plug_loc = [5,-depth, 1.5];
 
 margin = 0.15;
 
+plug_margin=0.15;
+
 xt60_margin = 0.25;
 xt60m_margin = 1;
 
@@ -82,8 +84,8 @@ module cutout()
 
 	translate(plug_loc)
 	{
-	plug(margin=margin, , extra_depth=-2);
-	plug_latches(margin=margin);
+	plug(margin=plug_margin, , extra_depth=-2);
+	plug_latches(margin=plug_margin);
 	}
 
 	mw_lrs_holes()
@@ -158,7 +160,7 @@ module cover()
 				{
 					front_grid();
 					translate(plug_loc)
-					plug(margin=margin+plug_thickness, extra_depth=-2);
+					plug(margin=plug_margin+plug_thickness, extra_depth=-2);
 	
 					for ( p = xt60_loc )
 					translate(p)
