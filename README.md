@@ -5,8 +5,8 @@
 
 ## prints:
 
-* [Main case:](cover.stl)
-* [Shield for high voltage wires:](power_shield.stl)
+* [Main case:](stl/cover.stl)
+* [Shield for high voltage wires:](stl/power_shield.stl)
 
 ## insides:
 
