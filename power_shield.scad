@@ -23,16 +23,6 @@ h=26.8;
 d=22;
 chamf=4;
 
-
-flap_a_w=10;
-flap_a_x=4;
-
-flap_b_w=7;
-flap_b_x=33;
-
-flap_h=1;
-flap_latch=.8;
-
 corner=1;
 
 module plug_keepout(margin=0, depth=39, e=0)

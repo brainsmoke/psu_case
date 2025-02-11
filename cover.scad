@@ -15,9 +15,9 @@ depth=40;
 xt60_loc = [ [-47,-depth, 15], [-27,-depth, 15], [-7,-depth, 15] ];
 plug_loc = [5,-depth, 1.5];
 
-margin = 0.15;
+margin = 0.2;
 
-plug_margin=0.15;
+plug_margin=0.2;
 
 xt60_margin = 0.25;
 xt60m_margin = 1;
