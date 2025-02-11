@@ -1,12 +1,20 @@
 
 # Front panel for MEAN WELL LRS-350-* PSUs
 
+Printed 3mm thick in PETG to offset for material weaknesses due to print orientation.
+
+TODO: coat it with a UV-blocking paint.
+
 <img src="img/completed.jpg" width="768">
 
 ## prints:
 
 * [Main case:](stl/cover.stl)
 * [Shield for high voltage wires:](stl/power_shield.stl)
+
+## PCB
+
+* [XT60 'back plane':](pcb/gerb.zipl)
 
 ## insides:
 
