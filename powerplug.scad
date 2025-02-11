@@ -59,7 +59,7 @@ module plug_latch(margin=0)
 	rotate([0,90,0])
 	linear_extrude(9)
 	{
-		polygon([ [0, -1], [0, 1+margin], [9, margin]]);
+		polygon([ [0, -1], [0, 1.5+margin], [9, margin]]);
 	}
 }
 
@@ -67,7 +67,7 @@ module plug_latches(margin=0)
 {
 	for (x=[9.5,32])
 	for (y_flip=[-1, 1])
-	translate([(border_w-w)/2+x,1.8, h/2])
+	translate([(border_w-w)/2+x,1.6, h/2])
 	scale([1,1,y_flip])
 	translate([0,0,h/2])
 	plug_latch(margin);

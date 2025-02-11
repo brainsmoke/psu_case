@@ -4,6 +4,6 @@ color("red")
 intersection()
 {
 	translate([3,-40,-3])
-	cube([55, 1, 40]);
+	cube([55, 2.4, 40]);
 	cover();
 }
