@@ -89,7 +89,7 @@ module cutout()
 	}
 
 	mw_lrs_holes()
-	m4_hole(10);
+	m4_hole(10, margin=.25);
 
 	mw_lrs_vents_keepout(h=10, margin=1);
 }

@@ -169,10 +169,10 @@ module mw_lrs_keepout(margin=0, e=0)
 mw_lrs();
 %mw_lrs_keepout(margin=.4);
 
-module m4_hole(h)
+module m4_hole(h, margin=0)
 {
 	translate([0,0,-h])
-	cylinder(h=h+e, r=m4_thread/2);
+	cylinder(h=h+e, r=(m4_thread+margin)/2);
 }
 
 %mw_lrs_holes()
