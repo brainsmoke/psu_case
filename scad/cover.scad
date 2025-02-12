@@ -85,7 +85,7 @@ module cutout()
 	translate(plug_loc)
 	{
 	plug(margin=plug_margin, , extra_depth=-2);
-	plug_latches(margin=plug_margin);
+	plug_latches_keepout(margin=plug_margin);
 	}
 
 	mw_lrs_holes()
