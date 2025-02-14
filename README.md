@@ -24,3 +24,6 @@ TODO: coat it with a UV-blocking paint.
 
 <img src="img/ac_front.jpg" width="384"> <img src="img/ac_back.jpg" width="384">
 
+## Separator to shield input and output power, and neutral from live
+
+<img src="img/shield.jpg" width="384">
