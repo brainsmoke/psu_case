@@ -1,10 +1,9 @@
 
-use <cover.scad>
+include <params.scad>
+
 use <mw_lrs.scad>
 
 $fn=50;
-
-case_thickness = 3;
 
 feet_front_h = 3.3;
 feet_back_h = feet_front_h + case_thickness;
