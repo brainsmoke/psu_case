@@ -14,7 +14,7 @@ TODO: coat it with a UV-blocking paint.
 
 ## PCB
 
-* [XT60 'back plane':](pcb/gerb.zipl)
+* [XT60 'back plane':](pcb/gerb.zip)
 
 ## insides:
 
