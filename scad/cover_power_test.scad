@@ -1,5 +1,6 @@
 use <cover.scad>
 
+print_orientation()
 color("red")
 intersection()
 {

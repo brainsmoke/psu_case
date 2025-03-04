@@ -124,7 +124,11 @@ color("red")
 }
 }
 
-power_shield();
+rotate([-90,0,0])
+translate([0,-39,0])
+{
+	power_shield();
 
-//preview()
-//plug();
+	//preview()
+	//plug();
+}

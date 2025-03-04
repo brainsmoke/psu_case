@@ -3,6 +3,7 @@ use <utils.scad>
 use <xt.scad>
 use <cover.scad>
 
+print_orientation()
 preview()
 {
         translate( [-27,-40, 15])
@@ -10,6 +11,7 @@ preview()
         xt60f();
 }
 
+print_orientation()
 #intersection()
 {
 cover();

@@ -13,22 +13,6 @@ include <params.scad>
 $fn=16;
 e=.001;
 
-preview()
-{
-	mw_lrs();
-
-	for ( p = xt60_loc )
-	translate(p)
-	rotate([90,90,0])
-	xt60f();
-
-	translate(plug_loc)
-	plug();
-
-	translate(plug_loc)
-	power_shield();
-}
-
 module cutout()
 {
 	mw_lrs_keepout(margin=margin);
@@ -156,5 +140,31 @@ module cover()
 	}
 }
 
-#cover();
 
+module print_orientation()
+{
+	rotate([90,0,0])
+	translate([0,depth,0])
+	children();
+}
+
+
+print_orientation()
+preview()
+{
+	mw_lrs();
+
+	for ( p = xt60_loc )
+	translate(p)
+	rotate([90,90,0])
+	xt60f();
+
+	translate(plug_loc)
+	plug();
+
+	translate(plug_loc)
+	power_shield();
+}
+
+print_orientation()
+#cover();
