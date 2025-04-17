@@ -2,6 +2,8 @@
 # Front panel for MEAN WELL LRS-350-* PSUs
 
 Printed 3mm thick in PETG to offset for material weaknesses due to print orientation.
+100% infill (or enough wall thickness so that the slicer doesn't create a zig-zag pattern
+for the walls).
 
 TODO: coat it with a UV-blocking paint.
 
